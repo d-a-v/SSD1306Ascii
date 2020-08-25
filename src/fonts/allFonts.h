@@ -21,9 +21,10 @@
 #define readFontByte(addr) pgm_read_byte(addr)
 #else  // __AVR__
 /** declare a font. */
-#define GLCDFONTDECL(_n) static const uint8_t _n[]
+#define GLCDFONTDECL(_n) static const uint8_t _n[] PROGMEM
 /** Fake read from flash. */
-#define readFontByte(addr) (*(const unsigned char *)(addr))
+#define readFontByte(addr) pgm_read_byte(addr)
+//#define readFontByte(addr) (*(const unsigned char *)(addr))
 #endif  // __AVR__
 //------------------------------------------------------------------------------
 // Font Indices
